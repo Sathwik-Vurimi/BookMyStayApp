@@ -42,5 +42,4 @@ public class BookMyStayApp {
         // Confirm system initialization
         System.out.println("System initialized successfully.");
     }
-}{
 }
