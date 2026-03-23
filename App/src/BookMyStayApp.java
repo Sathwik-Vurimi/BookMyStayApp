@@ -14,6 +14,7 @@ abstract class Room {
         this.numberOfBeds = numberOfBeds;
         this.squareFeet = squareFeet;
         this.pricePerNight = pricePerNight;
+
     }
     public void displayRoomDetails() {
         System.out.println("Beds: " + numberOfBeds);
