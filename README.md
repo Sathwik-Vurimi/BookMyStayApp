@@ -1,17 +1,11 @@
 # BookMyStayApp
 This project presents the design and implementation of a Hotel Booking Management System to illustrate the practical application of Core Java and fundamental data structures in real-world scenarios
-Use Case 1: Application Entry & Welcome Message
-Goal: Establish a clear and predictable starting point for the Hotel Booking application by demonstrating how a Java program begins execution and produces console output.
-
-Actor: User – runs the application from the command line or IDE.
-
+Use Case 3: Centralized Room Inventory Management
+Goal: Introduce centralized inventory management by replacing scattered availability variables with a single, consistent data structure, demonstrating how HashMap solves real-world state management problems.
+Actor: RoomInventory – responsible for managing and exposing room availability across the system.
 Flow:
-
-User runs the application.
-JVM invokes the main() method.
-Application prints a welcome message along with the application name and version.
-Application terminates.
-Key Benefits
-Clear and predictable application startup behavior
-Single, well-defined execution entry point
-Improved debuggability during early development
+The system initializes the inventory component.
+Room types are registered with their available counts.
+Availability is stored and retrieved from a centralized HashMap.
+Updates to availability are performed through controlled methods.
+The current inventory state is displayed when requested.

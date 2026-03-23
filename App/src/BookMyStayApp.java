@@ -1,46 +1,107 @@
 /**
  * ============================================================
- * MAIN CLASS - UseCase1HotelBookingApp
+ * Use Case 3: Centralized Room Inventory Management
+ * Single File Implementation
  * ============================================================
- *
- * Use Case 1: Application Entry & Welcome Message
- *
- * Description:
- * This class represents the entry point of the
- * Hotel Booking Management System.
- *
- * At this stage, the application:
- * - Starts execution from the main() method
- * - Displays a welcome message to the user
- * - Confirms that the system has started successfully
- *
- * No business logic, data structures, or user input
- * is implemented in this use case.
- *
- * The goal is to establish a clear and predictable
- * application startup point.
- *
- * @author Sathwik-Vurimi
- * @version 1.0
  */
+import java.util.HashMap;
+import java.util.Map;
+abstract class Room {
+    protected int numberOfBeds;
+    protected int squareFeet;
+    protected double pricePerNight;
+    public Room(int numberOfBeds, int squareFeet, double pricePerNight) {
+        this.numberOfBeds = numberOfBeds;
+        this.squareFeet = squareFeet;
+        this.pricePerNight = pricePerNight;
+    }
+    public void displayRoomDetails() {
+        System.out.println("Beds: " + numberOfBeds);
+        System.out.println("Size: " + squareFeet + " sqft");
+        System.out.println("Price per night: " + pricePerNight);
+    }
+}
+class SingleRoom extends Room {
+    public SingleRoom() {
+        super(1, 250, 1500.0);
+    }
+}
 
+class DoubleRoom extends Room {
+    public DoubleRoom() {
+        super(2, 400, 2500.0);
+    }
+}
+class SuiteRoom extends Room {
+    public SuiteRoom() {
+        super(3, 750, 5000.0);
+    }
+}
+class RoomInventory {
+    private Map<String, Integer> roomAvailability;
+    public RoomInventory() {
+        roomAvailability = new HashMap<>();
+        initializeInventory();
+    }
+    private void initializeInventory() {
+        roomAvailability.put("Single", 5);
+        roomAvailability.put("Double", 3);
+        roomAvailability.put("Suite", 2);
+    }
+    public Map<String, Integer> getRoomAvailability() {
+        return roomAvailability;
+    }
+    public void updateAvailability(String roomType, int count) {
+        roomAvailability.put(roomType, count);
+    }
+}
+
+/**
+ * ============================================================
+ * MAIN CLASS - UseCase3InventorySetup
+ * ============================================================
+ * Use Case 3: Centralized Room Inventory Management
+ * Description:
+ * This class serves as the entry point for demonstrating
+ * centralized room inventory management in the hotel system.
+ * At this stage, the application:
+ * Creates different room type objects (Single, Double, Suite)
+ * Initializes a centralized RoomInventory instance
+ * Retrieves room availability from a single source (HashMap)
+ * Displays room details along with available room counts
+ * Room characteristics (beds, size, price) are obtained
+ * from Room objects, while availability is managed separately
+ * through the RoomInventory class.
+ * No booking, updating, or search functionality is included
+ * in this use case.
+ * The goal is to demonstrate separation of concerns and
+ * centralized data management.
+ * @version 3.1
+ */
 public class BookMyStayApp {
 
     /**
      * Application entry point.
-     *
-     * This method is the first method executed
-     * when the program is launched by the JVM.
-     *
+     * This method is executed when the program starts.
      * @param args Command-line arguments
      */
     public static void main(String[] args) {
-
-        // Display welcome message
-        System.out.println("Welcome to the Hotel Booking Management System");
-
-        // Confirm system initialization
-        System.out.println("System initialized successfully.");
+        Room single = new SingleRoom();
+        Room doubleRoom = new DoubleRoom();
+        Room suite = new SuiteRoom();
+        RoomInventory inventory = new RoomInventory();
+        System.out.println("Hotel Room Inventory Status\n");
+        System.out.println("Single Room:");
+        single.displayRoomDetails();
+        System.out.println("Available Rooms: " +
+                inventory.getRoomAvailability().get("Single") + "\n");
+        System.out.println("Double Room:");
+        doubleRoom.displayRoomDetails();
+        System.out.println("Available Rooms: " +
+                inventory.getRoomAvailability().get("Double") + "\n");
+        System.out.println("Suite Room:");
+        suite.displayRoomDetails();
+        System.out.println("Available Rooms: " +
+                inventory.getRoomAvailability().get("Suite"));
     }
-}{
 }
