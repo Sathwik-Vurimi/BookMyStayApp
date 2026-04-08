@@ -1,14 +1,13 @@
 # BookMyStayApp
 This project presents the design and implementation of a Hotel Booking Management System to illustrate the practical application of Core Java and fundamental data structures in real-world scenarios
-Use Case 7: Add-On Service Selection
-Goal: Extend the booking model to support optional services, demonstrating how real-world business features can be added without modifying core booking or allocation logic.
+Use Case 9: Error Handling & Validation
+Goal: Strengthen system reliability by introducing structured validation and error handling, ensuring that invalid inputs and inconsistent states are detected and handled early.
 Actor:
-Guest – selects optional services for an existing reservation.
-Add-On Service – represents an individual optional offering.
-Add-On Service Manager – manages the association between reservations and selected services.
+Guest – provides booking input that must be validated.
+Invalid Booking Validator – validates input and system state before processing requests.
 Flow:
-Guest selects one or more add-on services.
-Selected services are added to a list.
-The list of services is mapped to the corresponding reservation ID.
-Additional cost for the reservation is calculated.
-Core booking and inventory state remain unchanged.
+Guest provides booking input.
+System validates input values and system constraints.
+If validation fails, an error is raised immediately.
+A meaningful failure message is displayed.
+The system prevents invalid state changes and continues running safely.
